@@ -1,0 +1,29 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ book.title }}</title>
+</head>
+<body>
+<h1>{{ book.title }}</h1>
+<p>{{ book.author }}</p>
+
+<form action="{{url_for('book_remove', book_id=book.id)}}" method="post">
+<button>Remove</button>
+</form>
+
+<!--<div class="mt-2">
+    <a href="{{url_for('book_modify', book_id=book.id)}}" method="post" class="btn btn-primary">Modify</a>
+</div>
+-->
+<form action="{{url_for('book_modify', book_id=book.id)}}" method="post">
+<button>Modify</button>
+    <input type="text" value="{{ author }}" name="author" required>
+    <input type="text" value="{{ title }}" name="title" required>
+    </form>
+
+</body>
+</html>
