@@ -31,11 +31,12 @@ def main():
         if book_id == 'new':
             book = create_empty_book()
 
+            return redirect(url_for('index'))
         else:
             book = search_book_by_id(container, book_id)
         return render_template('book-edit.html', book=book)
 
-    @app.route('/books/<book_id>/save', methods=['POST'])
+    @app.route('/books/<book_id>/save', methods=['GET', 'POST'])
     def book_save(book_id):
         nonlocal container
         title = request.form['title']
@@ -61,9 +62,9 @@ def main():
         container = remove_book_by_id(container, book_id)
         return redirect(url_for('index'))
 
-    @app.route('/books/<book_id>/modify', methods=['POST'])
+    @app.route('/books/<book_id>/modify', methods=['GET', 'POST'])
     def book_modify(book_id):
-        #nonlocal container
+        nonlocal container
         book_title = request.form['title']
         book_author = request.form['author']
         container = modify_book(container, book_id, book_title, book_author)

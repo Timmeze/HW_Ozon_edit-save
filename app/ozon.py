@@ -1,5 +1,6 @@
 import uuid
 
+#str(uuid.uuid4()),#
 
 def create_book(title, author):
     return {
@@ -11,7 +12,7 @@ def create_book(title, author):
 
 def create_empty_book():
     return {
-        'id': 'new',
+        'id': str(uuid.uuid4()),
         'title': '',
         'author': '',
     }
@@ -44,12 +45,11 @@ def remove_book_by_id(container, book_id):
     return result
 
 def modify_book(container, book_id, book_title=None, book_author=None):
-    result = container.copy
+    result = []
     for book in container:
         if book_id == book['id']:
-            #book_title = str(input())
-            #book_author = str(input())
             book['title'] = book_title
             book['author'] = book_author
-            container.update(book)
-            return container
+        result.append(book)
+    return result
+
