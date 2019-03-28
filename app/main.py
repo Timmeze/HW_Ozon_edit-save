@@ -28,15 +28,14 @@ def main():
     @app.route('/books/<book_id>/edit')
     def book_edit(book_id):
         book = None
-        if book_id == 'new':
+        if book_id == 'book.id':
             book = create_empty_book()
-
-            return redirect(url_for('index'))
+            return render_template('book-edit.html', book=book)
         else:
             book = search_book_by_id(container, book_id)
         return render_template('book-edit.html', book=book)
 
-    @app.route('/books/<book_id>/save', methods=['GET', 'POST'])
+    @app.route('/books/<book_id>/save', methods=['POST'])
     def book_save(book_id):
         nonlocal container
         title = request.form['title']

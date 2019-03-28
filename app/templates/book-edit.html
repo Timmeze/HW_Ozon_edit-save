@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,8 +10,8 @@
 </head>
 <body>
 <form action="{{ url_for('book_save', book_id=book.id)}}" method="post">
-    <input type="text" value="{{ author }}" name="author" required>
-    <input type="text" value="{{ title }}" name="title" required>
+    <input type="text" value="{{author}}" name="author" required>
+    <input type="text" value="{{title}}" name="title" required>
     <button>Save</button>
 </form>
 </body>
