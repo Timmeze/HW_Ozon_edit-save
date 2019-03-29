@@ -4,7 +4,7 @@ python:
 
 install:
   - pip install -r requirements.txt
-  - pip ibstall codecov
+  - pip install codecov
 
 script:
   - pytest
